@@ -1,6 +1,6 @@
 const grama = []
-let i = 20
-let p = 0
+let i = 5             // Tamanho do array
+let p = 0             // Índice do array
 
 if (i > 0) {
     while (i > 0) {
@@ -10,4 +10,8 @@ if (i > 0) {
     }
 }
 
+const sorteioGrama = grama.map(valor => valor + 1)         // Substitui todos os valores do array por 1
+
+
 console.log(grama)
+console.log(sorteioGrama)
