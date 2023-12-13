@@ -1,21 +1,23 @@
 const grama = []      
-let q = 3              // Tamanho do array
+let q = 500000               // Tamanho do array
 let p = 0               // Índice do array
 
 function getRandomIntInclusive(p, q) {                                      //Sorteio de um índice do array
     min = Math.ceil(p);
-    max = Math.floor(q);
+    max = Math.floor(q - 1);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-console.log(getRandomIntInclusive(p, q))
 
-if (q > 0) {
-    for (let i = q; i > 0; i = i - 1) {
-        grama[p] = 0
-        p++
-    }
+if (q <= 0) {
+    console.log('O array precisa ter mais de zero números.')
+    return
 }
+
+for (let i = 0; i < q; i++) {
+    grama[i] = 0
+}
+console.log(grama)
 
 /* if (i > 0) {
     while (i > 0) {
@@ -27,7 +29,23 @@ if (q > 0) {
 */
 
 
-const sorteioGrama = grama.map(valor => valor + 1)         // Substitui todos os valores do array por 1
+let soma = 0
+while (!gramaEmTudo()) {           //for(;gramaEmTudo() = false;)
+    let sorteado = getRandomIntInclusive(p, q)
+    grama[sorteado] = 1
+    soma++
+    //console.log(grama, sorteado)
+}
 
-console.log(sorteioGrama)
+function gramaEmTudo () {
+    for (let i = q; i > 0; i = i -1) {
+        if (grama[i] == 0) {
+            return false
+        }
+    }
+    return true
+}
+
+
 console.log(grama)
+console.log(soma)
